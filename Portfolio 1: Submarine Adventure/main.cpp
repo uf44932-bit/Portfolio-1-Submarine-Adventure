@@ -73,6 +73,91 @@ public:
     }
 };
 
+class Map
+{
+public:
+    vector<string> level;
+    
+    Map()
+    {
+        level =
+        {
+            "###############",
+            "~~~~~~~@~~~~~~~",
+            "~~~~~~~ ~~~~~~",
+            "~~~~~ ~~~~~~~",
+            "~~~~~~ ~~~~~~~",
+            "~~~~~~  ~~~~~~",
+            "~~~~~  ~~~~~~",
+            "~~~~~~ # ~~~~~~",
+            "~~~~~ # ~~~~~~",
+            "~~~~~ ## ~~~~",
+            "~~~~ #  ~~~~",
+            "~~~      ~~~~~",
+            "~~~~~~  ~~~~~",
+            "~~~ #  ~~~~",
+            "~~~ *   $ ~~~~",
+            "~~     #    ~~",
+            "###############"
+        };
+    }
+    
+    bool isWall(int row, int col)
+    {
+        if(row < 0 || row >= level.size() || col < 0 || col >= level[0].size())
+        {
+            return true;
+        }
+        
+        return level[row][col]=='#';
+    }
+    
+    bool isSurface(int row, int col)
+    {
+        return level[row][col] == '~';
+        
+    }
+    
+    void printMap(Submarine& sub)
+    {
+        int startRow = sub.row - 2;
+        int startCol = sub.col - 2;
+        
+        
+        if (startRow < 0)
+            startRow = 0;
+        
+        if (startCol < 0)
+            startCol = 0;
+        
+        if (startRow + 5 > level.size())
+            startRow = level.size() - 5;
+        
+        if (startCol + 5 > level[0].size())
+            startCol = level[0].size() - 5;
+        
+        cout << endl;
+        
+        for (int r = startRow; r < startRow + 5; r++)
+        {
+            for (int c = startCol; c < startCol + 5; c++)
+            {
+                if (r == sub.row && c == sub.col)
+                {
+                    cout << "@";
+                }
+                else
+                {
+                    cout << level[r][c];
+                }
+            }
+            cout << endl;
+            
+        }
+        cout << endl;
+        
+    }
+};
 
 
 int main() {
