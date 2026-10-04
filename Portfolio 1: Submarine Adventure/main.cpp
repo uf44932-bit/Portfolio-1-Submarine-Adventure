@@ -1,14 +1,47 @@
-//
-//  main.cpp
-//  Portfolio 1: Submarine Adventure
-//
-//  Created by Anahi Munoz on 10/3/26.
-//
+/*
+ We're going to make a game about exploring the ocean in a submarine! We will be expanding this project for portfolios 2 and 3, so make sure your code is well organized and extensible.
+
+ Here's the rough outline:
+ The submarine starts on the surface of the ocean and descends
+ The submarine has a limited supply of oxygen, which depletes as it explores
+ The submarine can find interesting things underwater, such as treasures
+ The submarine eventually can return to the surface, where it will restore its oxygen before another adventure
+
+ */
+
 
 #include <iostream>
+#include <vector>
+#include <string>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+
+class Treasure
+{
+public:
+    string name;
+    int value;
+    
+    Treasure(string n, int v)
+    {
+        name = n;
+        value = v;
+        
+    }
+};
+
+
+
+int main() {
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return EXIT_SUCCESS;
 }
