@@ -84,20 +84,20 @@ public:
         {
             "###############",
             "~~~~~~~@~~~~~~~",
-            "~~~~~~~ ~~~~~~",
-            "~~~~~ ~~~~~~~",
-            "~~~~~~ ~~~~~~~",
-            "~~~~~~  ~~~~~~",
-            "~~~~~  ~~~~~~",
-            "~~~~~~ # ~~~~~~",
-            "~~~~~ # ~~~~~~",
-            "~~~~~ ## ~~~~",
-            "~~~~ #  ~~~~",
-            "~~~      ~~~~~",
-            "~~~~~~  ~~~~~",
-            "~~~ #  ~~~~",
-            "~~~ *   $ ~~~~",
-            "~~     #    ~~",
+            "   #         P ",
+            "             ##",
+            "  *          #$",
+            "               ",
+            "   $           ",
+            " S  #       ###",
+            "####       ##  ",
+            "  ####   ##    ",
+            "$ #         *  ",
+            "  S   #######  ",
+            "###         PP ",
+            "$####      ####",
+            "######  #######",
+            "**           **",
             "###############"
         };
     }
@@ -130,11 +130,11 @@ public:
         if (startCol < 0)
             startCol = 0;
         
-        if (startRow + 5 > level.size())
-            startRow = level.size() - 5;
+        if (startRow + 5 > (int)level.size())
+            startRow =(int)level.size() - 5;
         
-        if (startCol + 5 > level[0].size())
-            startCol = level[0].size() - 5;
+        if (startCol + 5 > (int)level[0].size())
+            startCol = (int)level[0].size() - 5;
         
         cout << endl;
         
@@ -339,10 +339,17 @@ public:
             cout << "Oxygen: " << submarine.oxygen << "/" << submarine.maxOxygen << endl;
             
             cout << endl;
-            cout << "Enter a move (W/A/S/D) or inspect: ";
+            cout << "Enter a move (W/A/S/D), inspect, or quit: ";
             
             string input;
             cin >> input;
+            
+            if (input == "quit" || input == "Quit" || input == "QUIT")
+            {
+                cout << "Returning to main menu... " << endl;
+                playing = false;
+                continue;
+            }
             
             if (input == "inspect" || input == "Inspect" || input == "INSPECT")
             {
@@ -352,7 +359,7 @@ public:
             
             if (input.length() != 1)
             {
-                cout << "invalid input! Enter W, A, S, D, or inspect." << endl;
+                cout << "invalid input! Enter W, A, S, D, inspect, or quit." << endl;
                 continue;
             }
             
@@ -395,17 +402,52 @@ public:
         }
     }
     
-}
+    void menu()
+    {
+        bool running = true;
+        
+        while(running)
+        {
+            cout << endl;
+            cout << "=============================" << endl;
+            
+            cout << "         Ocean Explorer"       << endl;
+            cout << "=============================" << endl;
+            
+            cout << "1. Start Game " << endl;
+            cout << "2. Quit " << endl;
+            cout << "Choose an option: ";
+            
+            int choice;
+            cin >> choice;
+            
+            
+            if (choice == 1)
+            {
+                startGame();
+                
+            }
+            else if (choice == 2)
+            {
+                cout << "GoodBye! " << endl;
+                running = false;
+            }
+            else
+            {
+                cout << "Invalid choice. Please enter 1 or 2." << endl;
+            }
+            
+        }
+    }
+    
+};
 
 
 int main() {
     
+    Game game;
     
-    
-    
-    
-    
-    
+    game.menu();
     
     
     return EXIT_SUCCESS;
