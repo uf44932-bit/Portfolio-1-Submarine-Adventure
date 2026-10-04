@@ -31,6 +31,48 @@ public:
     }
 };
 
+class Submarine
+{
+public:
+    int row;
+    int col;
+    
+    int oxygen;
+    int maxOxygen;
+    
+    vector<Treasure>treasures;
+    
+    Submarine()
+    {
+        row = 1;
+        col = 7;
+        
+        maxOxygen = 50;
+        oxygen = maxOxygen;
+    }
+    
+    void refillOxygen()
+    {
+        oxygen = maxOxygen;
+    }
+    
+    void addtreasure(Treasure treasure)
+    {
+        treasures.push_back(treasure);
+    }
+    
+    int diveEarning()
+    {
+        int total = 0;
+        
+        for(Treasure treasure : treasures)
+        {
+            total += treasure.value;
+        }
+        return total;
+    }
+};
+
 
 
 int main() {
